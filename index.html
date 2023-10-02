@@ -8,7 +8,25 @@
   <script src="book.js" defer></script>
 </head>
 <body>
-  <section class="container">
+  <dialog id="bookDialog">
+    <form>
+      <input class="text-field" autofocus type="text" name="title" placeholder="Book title">
+      <input class="text-field" type="text" name="author" placeholder="Author">
+      <input type="number" name="pages" placeholder="N. of pages">
+      <select>
+        <option value="default">Choose...</option>
+        <option value="true">Read</option>
+        <option value="false">Not read yet</option>
+      </select>
+      <div>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <input class="btn" id="submitBtn" type="button" value="Submit">
+      </div>
+    </form>
+  </dialog>
+  <section class="container"></section>
+  <section>
+    <button id="addBook">Add new book</button>
   </section>
 </body>
 </html>
