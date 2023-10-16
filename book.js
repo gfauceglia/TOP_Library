@@ -8,6 +8,7 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
+
   this.info = function() {
     let text = title + " by " + author + ", " + pages + " pages, "
     if (read) {
@@ -15,12 +16,11 @@ function Book(title, author, pages, read) {
     } else {
       text += "not read yet."
     }
-    console.log(text)
   }
-}
 
-function addBookToLibrary() {
-  
+  this.toggleRead = function() {
+    this.read = !this.read;
+  }
 }
 
 const addBook = document.getElementById("addBook");
@@ -60,11 +60,29 @@ function loadLibrary(arr) {
     card.setAttribute('id', index);
     card.innerHTML = `
       <h1 class="card-title">${book.title}</h1>
-      <p class="card-author">${book.author}</p>
-      <p class="card-pages">Pages: ${book.pages}</p>
+      <div class="card-info">
+        <span class="card-author">${book.author}</span>
+        <span class="card-pages">Pages: ${book.pages}</span>
+      </div>
+      <div class="card-btns">
+        <a onclick="removeBook(${index})">Remove from Library</a>
+        <a onclick="changeReadStatus(${index})">${book.read ? 'Set to Unread' : 'Set to Read'}</a>
+      <div>
     `
+    card.innerHTML += '</div>'
     cardContainer.appendChild(card);
   })
+}
+
+function removeBook(id) {
+  myLibrary.splice(id,id + 1);
+  loadLibrary(myLibrary);
+}
+
+function changeReadStatus(id) {
+  const book = myLibrary[id];
+  book.toggleRead();
+  loadLibrary(myLibrary);
 }
 
 loadLibrary(myLibrary);
