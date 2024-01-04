@@ -1,24 +1,22 @@
-const myLibrary = [
-  new Book("The Hobbit", "J.R.R. Tolkien", 295, true),
-  new Book("1984", "George Orwell", 328, true)
-];
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
 
-function Book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-
-  this.info = function() {
+  get info() {
     let text = title + " by " + author + ", " + pages + " pages, "
     if (read) {
       text += "read.";
     } else {
       text += "not read yet."
     }
+    return text;
   }
 
-  this.toggleRead = function() {
+  toggleRead() {
     this.read = !this.read;
   }
 }
@@ -84,5 +82,11 @@ function changeReadStatus(id) {
   book.toggleRead();
   loadLibrary(myLibrary);
 }
+
+
+const myLibrary = [
+  new Book("The Hobbit", "J.R.R. Tolkien", 295, true),
+  new Book("1984", "George Orwell", 328, true)
+];
 
 loadLibrary(myLibrary);
