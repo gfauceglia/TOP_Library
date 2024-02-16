@@ -7,8 +7,8 @@ class Book {
   }
 
   get info() {
-    let text = title + " by " + author + ", " + pages + " pages, "
-    if (read) {
+    let text = this.title + " by " + this.author + ", " + this.pages + " pages, "
+    if (this.read) {
       text += "read.";
     } else {
       text += "not read yet."
