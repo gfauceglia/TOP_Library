@@ -23,30 +23,9 @@ class Book {
 
 const addBook = document.getElementById("addBook");
 const bookForm = document.getElementById("bookDialog");
-const submitBtn = document.getElementById("submitBtn");
 
 addBook.addEventListener('click', () => {
   bookForm.showModal();
-});
-
-submitBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-
-  const title = document.querySelector('input[name="title"]').value.trim();
-  const author = document.querySelector('input[name="author"]').value.trim();
-  const pages = parseInt(document.querySelector('input[name="pages"]').value);
-  const select = document.querySelector('select');
-  const read = select.options[select.selectedIndex].value;
-
-  if (title !== "" && author !== "" && !isNaN(pages) && pages > 0 && read !== "default") {
-    const newBook = new Book(title, author, pages, read === "true");
-    myLibrary.push(newBook); 
-    loadLibrary(myLibrary);
-    bookForm.close();
-
-  } else {
-    alert("Error: Please check the inputs and try again");
-  }
 });
 
 function loadLibrary(arr) {
